@@ -5,6 +5,12 @@ Route::get('/',[
     'as' => 'index'
 ]);
 
+Route::get('/product/{slug}',[
+    'uses' => 'FrontEndController@singleProduct',
+    'as' => 'product.single'
+]);
+
+
 //Route::resource('products','ProductsController');
 Route::get('/product/create' ,[
     'uses' => 'ProductsController@create',
