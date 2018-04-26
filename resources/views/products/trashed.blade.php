@@ -20,7 +20,10 @@
                                 Edit
                             </th>
                             <th>
-                                Trash
+                                Restore
+                            </th>
+                            <th>
+                                Destroy
                             </th>
                         </thead>
                         <tbody>
@@ -36,12 +39,10 @@
                                         <a href="{{route('products.edit',['id' => $product->id])}}" class="btn btn-sm btn-info">Edit</a>
                                     </td>
                                     <td>
-                                        <form action="{{route('products.destroy',['id' => $product->id])}}" method="GET">
-                                            {{csrf_field()}}
-                                            {{method_field('Delete')}}
-                                            <button class="btn btn-sm btn-danger" type="submit">Trash</a>
-                                        </form>
-                                        
+                                        <a href="{{route('product.restore',['id' => $product->id])}}" class="btn btn-sm btn-secondary">Restore</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{route('product.kill',['id' => $product->id])}}" class="btn btn-sm btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -39,7 +39,31 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request , [
+            'name' => 'required',
+            'image'=>'required|image',
+            'description' => 'required',
+            'price'=>'required'
+        ]);
+        
+
+        $product_image = $request->image;
+        $product_image_new_name = time().$product_image->getClientOriginalName() ;
+        $product_image->move('uploads/products/',$product_image_new_name);
+        
+        $product = Product::create([
+            'name' => $request->name,
+            'slug' => str_slug($request->name),
+            'description' => $request->description,
+            'price'=> $request->price,
+            'image' => 'uploads/products/' .$product_image_new_name
+        ]);
+        
+        $product->save();
+
+        Session::flash('success','Post created successfuly.');
+        //dd($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -61,7 +85,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('products.edit')->with('product',Product::find($id));
     }
 
     /**
@@ -73,7 +97,31 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required'
+        ]);
+
+        $product = Product::find($id);
+        
+        if($request->hasFile('image')){
+            $product_image = $request->image;
+            $product_image_new_name = time(). $product_image->getClientOriginalName() ;
+            $product_image->move('uploads/products',$product_image_new_name);
+            $product->featured = 'uploads/products/'.$product_image_new_name;       
+        }
+
+        $product->name = $request->name;
+        $product->slug = $request->str_slug($product->name);
+        $product->description = $request->description;
+        $product->price = $request->price;
+
+        $product->save();
+        
+        Session::flash('success','Product Updated Successfuly.');
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -84,6 +132,38 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        
+        if(file_exists($product->image)){
+            unlink($product->image);
+        }
+
+        $product->delete();
+
+        Session::flash('success','The pproductt was just trashed');
+
+        return redirect()->back();
+    }
+
+    public function trashed() {
+        $products = Product::onlyTrashed()->get();
+
+        return view('products.trashed')->with('products',$products);
+    }
+
+    public function kill($id) {
+        $product = Product::withTrashed()->where('id',$id)->first(); // Query builder
+        //dd($post);
+        $product->forceDelete();
+        Session::flash('success','Product deleted Permenantly.');
+
+        return redirect()->back();
+    }
+
+    public function restore($id) {
+        $product = Product::withTrashed()->where('id',$id)->first();
+        $product->restore();
+        Session::flash('success','Product restored Successfuly.');
+        return redirect()->route('products.index');
     }
 }

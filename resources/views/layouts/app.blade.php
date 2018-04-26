@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">    
 </head>
 <body>
     <div id="app">
@@ -26,8 +27,10 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
+                    <ul class="navbar-nav mr-auto list-group">
+                        <li class="nav-item"><a class="nav-link" href="{{route('products.index')}}">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('products.create')}}">New Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('products.trashed')}}">Trashed Products</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -60,12 +63,43 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="container">
+            @if($errors->count()>0)
+                <ul class="list-group">
+                    @foreach($errors->all() as $error)
+                        <li class="list-group-item text-danger">
+                            {{$error}}
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+
+            @if(Session::has('success'))
+                <div class="alert alert-success">
+                    {{Session::get('success')}}
+                </div>
+            @endif
+        
+        </div>    
+        <br>
+        <br>
+
+        @yield('content')
+        
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script> 
+    <script>
+        @if (Session::has('success'))
+
+            toastr.success("{{ Session::get('success')}}")
+        @endif
+        @if (Session::has('info'))
+
+            toastr.info("{{ Session::get('info')}}")
+        @endif
+    </script>
 </body>
 </html>
