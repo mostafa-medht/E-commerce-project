@@ -10,7 +10,30 @@ Route::get('/product/{slug}',[
     'as' => 'product.single'
 ]);
 
+Route::post('/cart/add',[
+    'uses' => 'ShoppingController@add_to_cart',
+    'as' => 'cart.add'
+]);
 
+Route::get('/cart',[
+    'uses' => 'ShoppingController@cart',
+    'as' => 'cart'
+]);
+
+Route::get('/cart/delete/{id}',[
+    'uses' => 'ShoppingController@delete',
+    'as' => 'cart.delete'
+]);
+
+Route::get('/cart/incr/{id}/{qty}',[
+    'uses' => 'ShoppingController@incr',
+    'as' => 'cart.incr'
+]);
+
+Route::get('/cart/decr/{id}/{qty}',[
+    'uses' => 'ShoppingController@decr',
+    'as' => 'cart.decr'
+]);
 //Route::resource('products','ProductsController');
 Route::get('/product/create' ,[
     'uses' => 'ProductsController@create',
