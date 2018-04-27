@@ -45,6 +45,10 @@ Route::get('/cart/cheackout',[
     'as' => 'cart.checkout'
 ]);
 
+Route::post('/cart/cheackout',[
+    'uses' => 'CheckoutController@pay',
+    'as' => 'cart.checkout'
+]);
 //Route::resource('products','ProductsController');
 Route::get('/product/create' ,[
     'uses' => 'ProductsController@create',

@@ -43,7 +43,7 @@
                                 </td>
 
                                 <td class="product-subtotal">
-                                    <h5 class="total amount">${{$item->total()}}</h5>
+                                    <h5 class="total amount">$ {{number_format($item->total())}}</h5>
                                 </td>
 
                             </tr>
@@ -68,7 +68,7 @@
 							</td>
 
 							<td class="product-subtotal">
-								<h5 class="total amount">${{Cart::total()}}</h5>
+								<h5 class="total amount">$ {{number_format(Cart::total())}}</h5>
 							</td>
 						</tr>
 
@@ -92,11 +92,12 @@
 							</a>
 							
 							<span style="float: right;">
-								<form action="your-server-side-code" method="POST">
+                                <form action="{{route('cart.checkout')}}" method="POST">
+                                    {{csrf_field()}}
                                     <script
                                       src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                       data-key="pk_test_VK5p82l2WTTmUYJhMbkJtR28"
-                                      data-amount="999"
+                                      data-amount="{{Cart::total() * 100}}"
                                       data-name="Mostafa Medht"
                                       data-description="Example charge"
                                       data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
