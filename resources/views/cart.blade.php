@@ -42,11 +42,10 @@
         
                                             <div class="cart-product__item">
                                                 
-                                                <a href="#">
-                                                    <img src="{{asset($pdt->model->first->image)}}" alt="product" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
-                                                </a>
+                                                {{-- <a href="#">
+                                                    <img src="{{asset($pdt->rowId->image)}}" alt="product" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                                </a> --}}
                                                 <div class="cart-product-content">
-                                                    <p class="cart-author">Callum Bailey</p>
                                                     <h5 class="cart-product-title">{{$pdt->name}}</h5>
                                                 </div>
                                             </div>
@@ -103,7 +102,7 @@
                         <div class="cart-total">
                             <h3 class="cart-total-title">Cart Totals</h3>
                             <h5 class="cart-total-total">Total: <span class="price">${{Cart::total()}}</span></h5>
-                            <a href="20_checkout.html" class="btn btn-medium btn--light-green btn-hover-shadow">
+                            <a href="{{route('cart.checkout')}}" class="btn btn-medium btn--light-green btn-hover-shadow">
                                 <span class="text">Checkout</span>
                                 <span class="semicircle"></span>
                             </a>

@@ -34,6 +34,17 @@ Route::get('/cart/decr/{id}/{qty}',[
     'uses' => 'ShoppingController@decr',
     'as' => 'cart.decr'
 ]);
+
+Route::get('/cart/rapid/add/{id}',[
+    'uses' => 'ShoppingController@rapid_add',
+    'as' => 'cart.rapid.add'
+]);
+
+Route::get('/cart/cheackout',[
+    'uses' => 'CheckoutController@index',
+    'as' => 'cart.checkout'
+]);
+
 //Route::resource('products','ProductsController');
 Route::get('/product/create' ,[
     'uses' => 'ProductsController@create',
