@@ -32,6 +32,12 @@
                         <li class="nav-item"><a class="nav-link" href="{{route('products.index')}}">Products</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('products.create')}}">New Products</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('products.trashed')}}">Trashed Products</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('users')}}">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.create')}}">New User</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
