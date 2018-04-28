@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('admin.layout.admin')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-9 col-md-offset-2">
-            <div class="card">
-                <div class="card-header">Products</div>
+        <div class="col-md-8 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">Products</div>
 
-                <div class="card-body">
+                <div class="panel-body">
                     <table class="table table-hover">
                         <thead>
                             <th>
@@ -17,10 +17,10 @@
                                 Price
                             </th>
                             <th>
-                                Restore
+                                Edit
                             </th>
                             <th>
-                                Destroy
+                                Trash
                             </th>
                         </thead>
                         <tbody>
@@ -33,10 +33,15 @@
                                         {{$product->price}}
                                     </td>
                                     <td>
-                                        <a href="{{route('product.restore',['id' => $product->id])}}" class="btn btn-sm btn-secondary">Restore</a>
+                                        <a href="{{route('products.edit',['id' => $product->id])}}" class="btn btn-sm btn-info">Edit</a>
                                     </td>
                                     <td>
-                                        <a href="{{route('product.kill',['id' => $product->id])}}" class="btn btn-sm btn-danger">Delete</a>
+                                        <form action="{{route('products.destroy',['id' => $product->id])}}" method="GET">
+                                            {{csrf_field()}}
+                                            {{method_field('Delete')}}
+                                            <button class="btn btn-sm btn-danger" type="submit">Trash</a>
+                                        </form>
+                                        
                                     </td>
                                 </tr>
                             @endforeach

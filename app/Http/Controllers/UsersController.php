@@ -20,7 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.index')->with('profiles',Profile::all())
+        return view('admin.users.index')->with('profiles',Profile::all())
                                         ->with('users',User::all());
 
     }
@@ -32,7 +32,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('admin.users.create');
     }
 
     /**
@@ -106,7 +106,13 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->profile->delete();
+        $user->delete();
+
+        Session::flash('success', 'User deleted');
+
+        return redirect()->back();
     }
 
     public function admin($id) {

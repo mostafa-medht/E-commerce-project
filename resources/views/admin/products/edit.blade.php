@@ -1,23 +1,23 @@
-@extends('layouts.app')
+@extends('admin.layout.admin')
 
 @section('content')
 <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-9 col-md-offset-2">
-            <div class="card">
-                <div class="card-header">Create a new Product</div>
+            <div class="col-md-9 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">Update :{{$product->name}}</div>
 
-                <div class="card-body">
-                    <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
+                <div class="panel-body">
+                    <form action="{{route('products.update',['id' => $product->id])}}" method="POST" enctype="multipart/form-data">
                         {{csrf_field()}}
-
+                        {{-- {{method_field('PUT')}} --}}
                         <div class="form-group">
                             <label for="name">Name : </label>
-                            <input type="text" name="name" class="form-control" value="{{old('name')}}">
+                            <input type="text" name="name" class="form-control" value="{{$product->name}}">
                         </div>
                         <div class="form-group">
                             <label for="price">Price : </label>
-                            <input type="number" name="price" class="form-control" value="{{old('price')}}">
+                            <input type="number" name="price" class="form-control" value="{{$product->price}}">
                         </div>
                         <div class="form-group">
                             <label for="image">Image : </label>
@@ -25,12 +25,12 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Description : </label>
-                            <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{old('description')}}</textarea>
+                            <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{$product->description}}</textarea>
                         </div>
                         <div class="form-group">
                             <div class="text-center">
                                 <button class="btn btn-success" type="submit">
-                                    Save Product
+                                    Update Product
                                 </button>
                             </div>
                         </div>

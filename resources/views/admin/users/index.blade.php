@@ -1,14 +1,14 @@
-@extends('layouts.app')
+@extends('admin.layout.admin')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-9 col-md-offset-2">
-            <div class="card">
-                <div class="card-header">
+        <div class="col-md-8 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">
                     Users
                 </div>
-                <div class="card-body">
+                <div class="panel-body">
                     <table class="table table-hover">
                             <thead>
                                 <th>
@@ -50,9 +50,9 @@
                                             @endforeach
                                     </td>
                                     <td>
-                                            @if(Auth::id()!==$user->id)
-                                                <a href="{{route('user.delete',['id' => $user->id])}}" class="btn btn-sm btn-danger">Delete</a>
-                                            @endif
+                                        @if(Auth::id() !== $user->id)
+                                            <a href="{{route('user.delete',['id' => $user->id])}}" class="btn btn-sm btn-danger">Delete</a>
+                                        @endif
                                     </td>
                                     </tr>
                                     @endforeach

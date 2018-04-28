@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('admin.layout.admin')
 
 @section('content')
 <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-9 col-md-offset-2">    
+            <div class="col-md-8 col-md-offset-0">    
             @if(count($errors)>0)
                 <ul class="list-group">
                     @foreach($errors->all() as $error)
@@ -14,12 +14,12 @@
                 </ul>
             @endif
             <br>
-            <div class="card">
-                <div class="card-header">
+            <div class="panel panel-default">
+                <div class="panel-heading">
                     Create a new User
                 </div>
                 
-                <div class="card-body">
+                <div class="panel-body">
                 <form action='{{ route('user.store')}}' method="POST" >
                         {{csrf_field()}}
                         <div class="form-group">

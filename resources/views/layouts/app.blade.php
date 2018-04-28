@@ -29,22 +29,22 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto list-group">
                         <li class="nav-item"><a class="nav-link" href="{{route('index')}}">Website</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{route('products.index')}}">Products</a></li>
+                        {{-- <li class="nav-item"><a class="nav-link" href="{{route('products.index')}}">Products</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('products.create')}}">New Products</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('products.trashed')}}">Trashed Products</a></li>
-                        
+                         --}}
                         {{-- @if(Auth::user()->admin) --}}
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('users')}}">Users</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('user.create')}}">New User</a>
                             </li>
-                        {{-- @endif --}}
+                        @endif --}}
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('user.profile')}}">My Profile</a>
-                        </li>
+                        </li> --}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->

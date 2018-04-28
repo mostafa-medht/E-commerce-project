@@ -18,7 +18,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view('products.index')->with('products',Product::all());
+        return view('admin.products.index')->with('products',Product::all());
     }
 
     /**
@@ -28,7 +28,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('admin.products.create');
     }
 
     /**
@@ -66,13 +66,13 @@ class ProductsController extends Controller
         return redirect()->back();
     }
 
-    public function search($query) {
-    $products = \App\Product::where('name','like', '%' . request($query) . '%')->get();
+    // public function search($query) {
+    // $products = \App\Product::where('name','like', '%' . request($query) . '%')->get();
 
-    return view('results')->with('products',$products)
-                        ->with('name','Search results : ' . request($query))
-                        ->with('query',request($query));
-    }
+    // return view('results')->with('products',$products)
+    //                     ->with('name','Search results : ' . request($query))
+    //                     ->with('query',request($query));
+    // }
     /**
      * Display the specified resource.
      *
@@ -92,7 +92,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        return view('products.edit')->with('product',Product::find($id));
+        return view('admin.products.edit')->with('product',Product::find($id));
     }
 
     /**
@@ -156,7 +156,7 @@ class ProductsController extends Controller
     public function trashed() {
         $products = Product::onlyTrashed()->get();
 
-        return view('products.trashed')->with('products',$products);
+        return view('admin.products.trashed')->with('products',$products);
     }
 
     public function kill($id) {
@@ -172,6 +172,6 @@ class ProductsController extends Controller
         $product = Product::withTrashed()->where('id',$id)->first();
         $product->restore();
         Session::flash('success','Product restored Successfuly.');
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 }
