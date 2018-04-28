@@ -41,6 +41,10 @@
                                 <a class="nav-link" href="{{ route('user.create')}}">New User</a>
                             </li>
                         {{-- @endif --}}
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.profile')}}">My Profile</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
