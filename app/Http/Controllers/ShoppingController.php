@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Product;
 use Cart;
 use Illuminate\Http\Request;
@@ -21,7 +22,9 @@ class ShoppingController extends Controller
         ]);
 
         Cart::associate($cartItem->rowId,'App\Product');
-
+        
+        Session::flash('success','Added To Cart Successfuly.');
+        
         return redirect()->route('cart');
     }
 
@@ -32,19 +35,20 @@ class ShoppingController extends Controller
 
     public function delete($id){
         Cart::remove($id);
-
+        Session::flash('success','Product Removed from Cart Successfuly.');        
         return redirect()->back();
     }
 
     public function incr($id,$qty) {
         Cart::update($id,$qty+1);
-
+        Session::flash('success','incremented Successfuly.');        
         return redirect()->back();
     }
 
     public function decr($id,$qty) {
         Cart::update($id,$qty-1);
-
+        Session::flash('success','Decrement Successfuly.');
+        
         return redirect()->back();
     }
 
@@ -59,6 +63,8 @@ class ShoppingController extends Controller
         ]);
 
         Cart::associate($cartItem->rowId,'App\Product');
+
+        Session::flash('success','Added To Cart Successfuly.');
 
         return redirect()->route('cart');
     }

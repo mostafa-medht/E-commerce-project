@@ -66,6 +66,13 @@ class ProductsController extends Controller
         return redirect()->back();
     }
 
+    public function search($query) {
+    $products = \App\Product::where('name','like', '%' . request($query) . '%')->get();
+
+    return view('results')->with('products',$products)
+                        ->with('name','Search results : ' . request($query))
+                        ->with('query',request($query));
+    }
     /**
      * Display the specified resource.
      *

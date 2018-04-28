@@ -28,6 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto list-group">
+                        <li class="nav-item"><a class="nav-link" href="{{route('index')}}">Website</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('products.index')}}">Products</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('products.create')}}">New Products</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('products.trashed')}}">Trashed Products</a></li>

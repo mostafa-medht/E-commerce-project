@@ -18,7 +18,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/swiper.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/primary-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/magnific-popup.css')}}">
-
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">    
+    
     <!--Styles for RTL-->
 
     <!--<link rel="stylesheet" type="text/css" href="css/rtl.css">-->
@@ -30,14 +31,18 @@
 </head>
 
 
-<body class=" ">
+<body class="" style="color:lightslategray">
 
 <header class="header" id="site-header">
 
     <div class="container">
 
         <div class="header-content-wrapper">
-
+            <div class="logo">
+                <div class="logo-text">
+                    <div class="logo-title"><a href="{{route('index')}}"> Our website</a></div>
+                </div>
+            </div>
             <ul class="nav-add">
                 <li class="cart">
 
@@ -60,6 +65,19 @@
 
                 </li>
             </ul>
+
+            <ul class="nav-add">
+                <li class="search search_main" style="color: black;margin-right:50px;">
+                    <a href="#" class="js-open-search">
+                        <i class="seoicon-loupe"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Left Side Of Navbar -->
+            <ul class="primary-menu-menu" style="margin-top:10px;">
+                <li class="nav-item"><a class="nav-link" href="{{route('index')}}">Home</a></li>
+            </ul>
         </div>
 
     </div>
@@ -73,8 +91,8 @@
         <div class="row pt120">
             <div class="col-lg-8 col-lg-offset-2">
                 <div class="heading align-center mb60">
-                    <h4 class="h1 heading-title">Udemy E-commerce tutorial</h4>
-                    <p class="heading-text">Buy books, and we ship to you.
+                    <h4 class="h1 heading-title">E-commerce Website</h4>
+                    <p class="heading-text">Buy books, and we ship to you....:)
                     </p>
                 </div>
             </div>
@@ -88,18 +106,35 @@
 
 <!-- Footer -->
 
-<footer class="footer">
-    <div class="sub-footer">
+<footer class="footer align-center">
+    {{-- <div class="sub-footer"> --}}
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 align-center" style="margin-bottom:50px;">
+                    <p class="text-center" >Developed By : &copy; Mostafa Medht</p>
                 </div>
             </div>
         </div>
-    </div>
+    {{-- </div> --}}
 </footer>
 
-
+<!-- Overlay Search -->
+<div class="overlay_search">
+    <div class="container">
+        <div class="row">
+            <div class="form_search-wrap"> 
+                <form method="GET" action="{{route('results', ['query'])}}">
+                    <input class="overlay_search-input" name="query" placeholder="Type and hit Enter..." type="text">
+                    <a href="#" class="overlay_search-close">
+                        <span></span>
+                        <span></span>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Overlay Search -->
 
 <script src="{{asset('app/js/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('app/js/crum-mega-menu.js')}}"></script>
@@ -111,7 +146,17 @@
 <script src="{{asset('app/js/velocity.min.js')}}"></script>
 <script src="{{asset('app/js/ScrollMagic.min.js')}}"></script>
 <script src="{{asset('app/js/animation.velocity.min.js')}}"></script>
+<script src="{{ asset('js/toastr.min.js') }}"></script> 
+<script>
+    @if (Session::has('success'))
 
+        toastr.success("{{ Session::get('success')}}")
+    @endif
+    @if (Session::has('info'))
+
+        toastr.info("{{ Session::get('info')}}")
+    @endif
+</script>
 <!-- ...end JS Script -->
 
 

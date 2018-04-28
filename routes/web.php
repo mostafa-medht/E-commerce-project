@@ -49,7 +49,22 @@ Route::post('/cart/cheackout',[
     'uses' => 'CheckoutController@pay',
     'as' => 'cart.checkout'
 ]);
+
+// Route::get('/results',function(){
+//     $products = \App\Product::where('name','like', '%' . request('query') . '%')->get();
+
+//     return view('results')->with('products',$products)
+//                             ->with('name','Search results : ' . request('query'))
+//                             ->with('query',request('query'));
+// });
 //Route::resource('products','ProductsController');
+
+Route::get('/{query}',[
+    'uses' => 'ProductsController@search',
+    'as' => 'results'
+]);
+
+
 Route::get('/product/create' ,[
     'uses' => 'ProductsController@create',
     'as' => 'products.create'
