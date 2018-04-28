@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
 
         App\Profile::create([
             'user_id' => $user->id,
-            'avatar' => 'uploads/avatars/avatar6.png',
+            'avatar' => 'uploads/avatars/1.png',
             'about' => 'Loarm ipusm dolor site amet ,Loarm ipusm dolor site amet ,Loarm ipusm dolor site amet ,Loarm ipusm dolor site amet ',
             'facebook' => 'facebook.com',
             'youtube' => 'youtube.com'

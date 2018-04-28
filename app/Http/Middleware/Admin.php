@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
+use Session;
 use Closure;
 
 class Admin
@@ -15,6 +17,12 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
+        if(!Auth::user()->admin){
+            Session::flash('info','You do not have permission to perform this action ');
+
+            return redirect()->back();
+        }
+        
         return $next($request);
     }
 }
