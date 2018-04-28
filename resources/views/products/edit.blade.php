@@ -8,9 +8,9 @@
                 <div class="card-header">Update :{{$product->name}}</div>
 
                 <div class="card-body">
-                    <form action="{{route('products.update',['id' => $product->id])}}" method="POST">
+                    <form action="{{route('products.update',['id' => $product->id])}}" method="POST" enctype="multipart/form-data">
                         {{csrf_field()}}
-                        {{method_field('PUT')}}
+                        {{-- {{method_field('PUT')}} --}}
                         <div class="form-group">
                             <label for="name">Name : </label>
                             <input type="text" name="name" class="form-control" value="{{$product->name}}">

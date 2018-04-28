@@ -17,9 +17,6 @@
                                 Price
                             </th>
                             <th>
-                                Edit
-                            </th>
-                            <th>
                                 Restore
                             </th>
                             <th>
@@ -34,9 +31,6 @@
                                     </td>
                                     <td>
                                         {{$product->price}}
-                                    </td>
-                                    <td>
-                                        <a href="{{route('products.edit',['id' => $product->id])}}" class="btn btn-sm btn-info">Edit</a>
                                     </td>
                                     <td>
                                         <a href="{{route('product.restore',['id' => $product->id])}}" class="btn btn-sm btn-secondary">Restore</a>

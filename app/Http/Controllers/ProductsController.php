@@ -53,7 +53,7 @@ class ProductsController extends Controller
         
         $product = Product::create([
             'name' => $request->name,
-            'slug' => str_slug($request->name),
+            // 'slug' => str_slug($request->name),
             'description' => $request->description,
             'price'=> $request->price,
             'image' => 'uploads/products/' .$product_image_new_name
@@ -114,13 +114,14 @@ class ProductsController extends Controller
         
         if($request->hasFile('image')){
             $product_image = $request->image;
-            $product_image_new_name = time(). $product_image->getClientOriginalName() ;
+            $product_image_new_name = time().$product_image->getClientOriginalName() ;
             $product_image->move('uploads/products',$product_image_new_name);
-            $product->featured = 'uploads/products/'.$product_image_new_name;       
+            $product->image = 'uploads/products/'.$product_image_new_name; 
+            $product->save();              
         }
 
         $product->name = $request->name;
-        $product->slug = $request->str_slug($product->name);
+        // $product->slug = $request->str_slug($product->name);
         $product->description = $request->description;
         $product->price = $request->price;
 

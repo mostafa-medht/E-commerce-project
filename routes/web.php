@@ -5,7 +5,7 @@ Route::get('/',[
     'as' => 'index'
 ]);
 
-Route::get('/product/{slug}',[
+Route::get('/products/{slug}',[
     'uses' => 'FrontEndController@singleProduct',
     'as' => 'product.single'
 ]);
@@ -59,7 +59,7 @@ Route::post('/cart/cheackout',[
 // });
 //Route::resource('products','ProductsController');
 
-Route::get('/{query}',[
+Route::get('/results/{query}',[
     'uses' => 'ProductsController@search',
     'as' => 'results'
 ]);
@@ -107,7 +107,7 @@ Route::get('products/edit/{id}',[
 
 Route::post('products/update/{id}',[
     'uses' => 'ProductsController@update',
-    'as' => 'product.update'
+    'as' => 'products.update'
 ]);
 // Route::get('products/deleted/{id}',[
 //     'uses' => 'ProductsController@destroy',

@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-9 col-md-offset-2">
             <div class="card">
-                <div class="card-header">Create a new channel</div>
+                <div class="card-header">Create a new Product</div>
 
                 <div class="card-body">
                     <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">

@@ -77,6 +77,9 @@
             <!-- Left Side Of Navbar -->
             <ul class="primary-menu-menu" style="margin-top:10px;">
                 <li class="nav-item"><a class="nav-link" href="{{route('index')}}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('products.create')}}">Add a New Products</a></li>
+                {{-- <li class="nav-item"><a class="nav-link" href="{{route('products.index')}}">Products</a></li> --}}
+                
             </ul>
         </div>
 
@@ -110,7 +113,7 @@
     {{-- <div class="sub-footer"> --}}
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 align-center" style="margin-bottom:50px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 justify-content-center">
                     <p class="text-center" >Developed By : &copy; Mostafa Medht</p>
                 </div>
             </div>
