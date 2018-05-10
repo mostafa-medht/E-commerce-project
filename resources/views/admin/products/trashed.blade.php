@@ -34,7 +34,7 @@
                                             {{$product->price}}
                                         </td>
                                         <td>
-                                            <a href="{{route('product.restore',['id' => $product->id])}}" class="btn btn-sm btn-secondary">Restore</a>
+                                            <a href="{{route('product.restore',['id' => $product->id])}}" class="btn btn-sm btn-info">Restore</a>
                                         </td>
                                         <td>
                                             <a href="{{route('product.kill',['id' => $product->id])}}" class="btn btn-sm btn-danger">Delete</a>
