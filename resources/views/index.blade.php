@@ -10,7 +10,7 @@
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="books-item">
                     <div class="books-item-thumb">
-                        <img src="{{url($product->image)}}" alt="book">
+                        <img src="{{$product->image}}" alt="book">
                         <div class="new">New</div>
                         <div class="sale">Sale</div>
                         <div class="overlay overlay-books"></div>
