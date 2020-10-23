@@ -8,7 +8,6 @@ E-commerce website
 
 * [Instructions](#instructions)
     * [Definition](#Definition)
-* [Run the project Online](#Run)
 
 
 ## Instructions
