@@ -1,16 +1,29 @@
+# E-Commerce Project
+E-commerce website
 
-Name : Mostafa Medht Abdellah hashem 
+> By Mostafa Medht
 
-Section : 6 (trnsformed from section Eng/Wahed)
 
-E-commerce Project with laravel
+## Table of Contents
 
+* [Instructions](#instructions)
+    * [Definition](#Definition)
+* [Run the project Online](#Run)
+
+
+## Instructions
+ * A Responsive E-commerce website 
+# Microsoft-Homepage-Clone
+
+# Definition
+_Is a project built using **HTML && CSS && Laravel && Mysql && APIs**, it has Many page:_
+* _**main page**_ displays a slider, some Products Sec, Cart section
+
+*_**registeration page**_ to register 
+*_**login page**_ to login
+*_**product page**_ to show product
+*_**cart page**_ to show cart 
+
+
+**Notes:
 ScreenShots folder name : project img
-****************************************************************
-الاسم : مصطفى مدحت عبداللاه هاشم 
-
-سكشن : 6
-(محول من سكاشن م/وحيد)
-مشروع التجارة الالكترونية بلارفيل
-
-اسم الملف المحتوى ع الصور اللى تشرح المشروع : project img
